@@ -1,5 +1,5 @@
 {
-  "name": "review-text-analyzer",
+  "name": "analyse",
   "version": "0.0.1",
   "description": "yo",
   "main": "server.js",
@@ -17,6 +17,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zeroCoder1/ReviewTextAnalyzer.git"
+    "url": "https://github.com/zeroCoder1/analyse.git"
   }
 }
