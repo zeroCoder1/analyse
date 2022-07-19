@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0 shrink-to-fit=no>
+
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.dom.min.js"></script>
+
+  <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+  <script src="sketch.js"></script>
+  <script src="concordance.js"></script>
+  <script src="reviewlist.js"></script>
+  <script src="analysis.js"></script>
+  <script src="sorters.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <nav id="topbar" class="navbar border-bottom">
+    <div id="concordanceTitle">
+      <h2>Concordance</h2>
+      <div id="concordanceSearch">
+        <input id="concordanceInput" type="text" class="form-control" placeholder="Search for a word" />
+      </div>
+    </div>
+    <div>
+      <button id="resetButton" class="btn my-primary">Analyze New App</button>
+    </div>
+    <!-- <span class="navbar-brand mb-0 h1">Review Text Analyzer</span> -->
+  </nav>
+  <div id="appIdDiv" class="container p-3 main">
+    <h2>Review Text Analyzer</h2>
+    <form id="appIdForm" onsubmit="return appIdEntered()">
+      <div class="form-group row">
+        <label for="appIdInput" class="col col-form-label">App ID</label>
+        <input type="text" class="col-6 form-control" id="appIdInput" placeholder="Enter App ID">
+        <select id="appIdType" class="col-4">
+          <option value="itunes" selected>iTunes App</option>
+          <option value="gplay">Google Play App</option>
+          <!-- <option value="json">JSON Test Data</option> -->
+        </select>
+      </div>
+      <div class="row m-1">
+        <small>id<b>743691886</b> </small>
+      </div>
+      <div class="align-right">
+        <button type="submit" class="btn my-primary m-1">Analyze App</button>
+      </div>
+    </form>
+  </div>
+  <div id="analysisDiv">
+    <div id="concordanceWrapper">
+      <span id="clearConcordance" class="mr-2 mb-0 pointer">Clear Selection</span>
+      <div id="concordance"></div>
+    </div>
+    <div id="reviewAnalysis">
+      <h2 id="selectedWord">Stats</h2>
+      <ul>
+        <li class="wordStats">This word was found
+          <span id="wordCount"></span> times in
+          <span id="reviewCount"></span> reviews</li>
+        <li class="reviewStats">Total Reviews Received:
+          <span id="totalReviewCount"></span>
+        </li>
+        <li class="reviewStats">Total Unique Words:
+          <span id="totalWordCount"></span>
+        </li>
+        <li>Average Rating:
+          <span id="avgRating"></span> out of 5</li>
+      </ul>
+      <div id="allReviewDiv">
+        <h2 id="allReviewTitle" class="flex-grow">All Reviews</h2>
+        <h2 id="wordReviewTitle" class="flex-grow">All Reviews w/
+          <span id="selectedWordReview"></span>
+        </h2>
+        <p class="input-label mt-2">Sort: </p>
+        <select id="sortMenu" class="mb-1">
+          <option value="0">By Date New to Old</option>
+          <option value="1">By Rating High to Low</option>
+          <option value="2">By Rating Low to High</option>
+        </select>
+      </div>
+      <div id="allReviews">
+      </div>
+    </div>
+  </div>
+  <div class="pr-4 align-bottom-right">
+    <p class="text-white " id="output"></p>
+  </div>
+</body>
+
+</html>
