@@ -18,7 +18,7 @@ function setup() {
   noCanvas();
 
   // Connect to either the deployed server or the local server
-  socket = io.connect('https://secret-everglades-62910.herokuapp.com');
+  socket = io.connect('https://analyse-production.up.railway.app');
 
   // Handle server responses
   socket.on('reviewResponse', serverResponded);

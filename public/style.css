@@ -12,8 +12,8 @@ body {
     height: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background: linear-gradient(#2f1d4e,#0f081b);
-    color: rgb(255, 255, 255);
+    background: linear-gradient(#54457F,#5A0B4D);
+    color: white;
     position: relative;
 }
 
