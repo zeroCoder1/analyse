@@ -13,7 +13,6 @@
     "google-play-scraper": "^6.0.1",
     "itunes-app-reviews": "0.0.2",
     "rita": "^1.3.11",
-    "socket.io": "4.5.1"
     "socket.io": "^2.0.4"
   },
   "repository": {
